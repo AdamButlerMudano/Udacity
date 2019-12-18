@@ -30,7 +30,7 @@ class Actor(nn.Module):
     
 
 class Critic(nn.Module):
-    def __init__(self, state_size, action_size, seed, fcs1_units=100, fc2_units=700):
+    def __init__(self, state_size, action_size, seed, fcs1_units=100, fc2_units=70):
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.fcs1 = nn.Linear(state_size, fcs1_units)

@@ -10,7 +10,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 BUFFER_SIZE = int(1e5)  #reply buffer size
-BATCH_SIZE = 128        #minibatch_size
+BATCH_SIZE = 512        #minibatch_size
 GAMMA = 0.99            #discount factor
 TAU = 1e-3              #soft update mix rate
 LR_ACTOR = 1e-4         #actor learning rate
@@ -94,6 +94,7 @@ class Agent():
         ## Minimise loss
         self.critic_optimizer.zero_grad()
         critic_loss.backward()
+        torch.nn.utils.clip_grad_norm(self.critic_local.parameters(), 1)
         self.critic_optimizer.step()
         
         
