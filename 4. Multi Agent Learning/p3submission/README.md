@@ -23,13 +23,15 @@ The state space has 24 dimensions, with each agent making its own observations a
 
 ### Installation
 
+The relevant Unity environment and code required to run the simulation can be found on the github repository https://github.com/AdamButlerMudano/Udacity. The simulation can be executed by running the Tennis.ipynb notebook within the folder '4. Multi Agent Learning'.
+
 The following packages are required to run the solution, these can all be installed from pip:
 - unityagents
 - numpy
 - torch
 - matplotlib
 
-The Unity environment used for the simulation can be installed by followed the instructions at Step 2 [here](https://classroom.udacity.com/nanodegrees/nd893/parts/ec710e48-f1c5-4f1c-82de-39955d168eaa/modules/89b85bd0-0add-4548-bce9-3747eb099e60/lessons/3cf5c0c4-e837-4fe6-8071-489dcdb3ab3e/concepts/e85db55c-5f55-4f54-9b2b-d523569d9276).
+
 
 ### Running Simulation
 

@@ -13102,7 +13102,9 @@ div#notebook {
 <h3 id="Unity-Environment">Unity Environment<a class="anchor-link" href="#Unity-Environment">&#182;</a></h3><p>The Unity environment is responsible for managing the simulated world, determining the agents next state and reward for a given action.</p>
 <h3 id="Tennis.ipynb">Tennis.ipynb<a class="anchor-link" href="#Tennis.ipynb">&#182;</a></h3><p>This notebook manages the high level orchestration of the training loop and episodes and visualises the results.</p>
 <h3 id="ddpg_agent.py">ddpg_agent.py<a class="anchor-link" href="#ddpg_agent.py">&#182;</a></h3><p>ddpg_agent.py implements the ReplayBuffer, OUNoise and Agent classes which together conduct the running of the DDPG Network that is used to drive both of the agents in the environment.</p>
+<p>An Actor-Critic based algorithm was chosen here due to it's ability to balance bias and variance between the 2 networks resulting in an overall better performance.</p>
 <h3 id="model.py">model.py<a class="anchor-link" href="#model.py">&#182;</a></h3><p>This implements the simple Feed Forward Neural Network architectures for both the Actor and the Critic used by the DDPG agent. The Actor architecture implemented here consisted of a 3 layer network with Relu activation and hidden dimensions of 400 and 300 nodes respectively, the last layer has a tanh activation as opposed to Relu. Input and output dimensions correspond to the state and action spaces. The Critic architecture is also a 3 layer network with basic hidden dimensions of 400 and 300, however the action vector is also concatenated onto the second hidden layer. Input dimensions are that of the state space and the network outputs a single value.</p>
+<p>It is worth noting here that both agents participating in the simulation make observations from their own frame of reference but share the same model architecture and weights, whilst experiences from both agents are combined to run experience replay. Due to the symetric nature of the environment and task this helps speed up learning.</p>
 <h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><p>The environment was considered solved for the 73 episodes between 8,977 and 9,050. A maximum average score of 0.64 was achieved after approximately 5 hours of training time.</p>
 <p>On episode 8,942 a maximum score of 2.7 was reached by one of the agents during a rally containing 53 successful shots and 1,000 actions taken by each agent.</p>
 <p>For plots of these results please see tennis.ipynb</p>
@@ -13114,6 +13116,19 @@ div#notebook {
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
