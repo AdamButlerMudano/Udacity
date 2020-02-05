@@ -53,7 +53,7 @@ class Agent():
             self.learn(experiences, GAMMA)
             
             
-    def act(self, state, add_noise=True):
+    def act(self, state, eps, add_noise=True):
         ##Move state to device
         state = torch.from_numpy(state).float().to(device)
         
@@ -66,6 +66,9 @@ class Agent():
         ##Add noise if desired
         if add_noise:
             action += self.noise.sample()
+            
+        if random.random() < eps:
+            action = (np.random.random(self.action_size) * 2) - 1
             
         ##Clip action values
         return np.clip(action, -1, 1)
