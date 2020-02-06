@@ -63,12 +63,13 @@ class Agent():
             action = self.actor_local(state).cpu().data.numpy()
         self.actor_local.train()
             
-        ##Add noise if desired
+        ###Add noise if desired with dampening
         if add_noise:
-            action += self.noise.sample()
-            
-        if random.random() < eps:
-            action = (np.random.random(self.action_size) * 2) - 1
+            action += self.noise.sample()*eps
+           
+        ##Epsilon greedy exploration
+        #if random.random() < eps:
+        #    action = (np.random.random(self.action_size) * 2) - 1
             
         ##Clip action values
         return np.clip(action, -1, 1)
